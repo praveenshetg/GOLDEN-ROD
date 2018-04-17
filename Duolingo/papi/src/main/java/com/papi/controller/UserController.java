@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.papi.dao.GroupDao;
 import com.papi.dao.UserDao;
-import com.papi.entity.Group;
 import com.papi.entity.User;
+import com.papi.utility.PWUtility;
+import com.papi.wrapper.UserWrapper;
 
 /**
  * 
@@ -61,7 +62,15 @@ public class UserController {
 		userDao.addUser(user);
 
 	}
+	@RequestMapping(value = "/createAutoUsers/{groupId}", method = RequestMethod.POST, consumes = "application/json")
+	@ResponseBody
+	public void getUser( @RequestBody UserWrapper users, @PathVariable("groupId") Long groupId) throws Exception {
+		System.out.println("createAutoUsers");
+		PWUtility.createUserFromUserEmail(users.getUser());
 
+		
+
+	}
 	@RequestMapping("*")
 	@ResponseBody
 	public String fallbackMethod() {

@@ -2,21 +2,27 @@
 <body>
 <div class="main-div">
 <div class="form-div">
-<H1>Register Group</H1>
-	<hr>
+<H1><i class="fa fa-group"></i> Register Group</H1>
+<hr>
+
   <form action="" id="grp_reg_form">
     <label for="fname">Group Name</label>
-    <input type="text" id="pw_grp_name" name="group-name" placeholder="Group Name.." required="true">
+    <input type="text" id="pw_grp_name" name="group-name" class="text-center" placeholder="Group Name.." required="true">
 
   <input type="submit" value="Create Group" id="create-group-btn">
 <!--     <div id="create-group-btn" class="pw-submit-btn">Submit</div> -->
   </form>
+<hr>
+<div id="group-table"></div>
+	<hr>
 </div>
 </div>
+
 
 </body>
 
 <script>
+$("#group-table").load("view/groupView.html");
 $('#grp_reg_form').submit(function(e) { 
 	e.preventDefault();
 });

@@ -1,0 +1,169 @@
+<html>
+<style>
+.container-box{
+    #width: 100%;
+    display: flow-root;
+        padding-left: 1%;
+          padding-right: 1%;
+          background: rgba(0,0,0,.05) !important;
+}
+.container {
+	border: 2px solid #dedede;
+	background-color: #f1f1f1;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px 0;
+	    width: 50%;
+    float: left;
+}
+
+/* Darker chat container */
+.darker {
+	float: right;
+	border-color: #ccc;
+	background-color: #ddd;
+}
+
+/* Clear floats */
+.container::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Style images */
+.container img {
+	float: left;
+	max-width: 60px;
+	width: 100%;
+	margin-right: 20px;
+	border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
+}
+
+/* Style time text */
+.time-right {
+	float: right;
+	color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+	float: left;
+	color: #999;
+}
+</style>
+<body>
+	<div class="main-div">
+		<div class="form-div">
+			<h1> <i class="fa fa-comments-o"> </i> Kings Eleven<i class="fa fa-refresh" style="color:gray;float:right;"></i></h1>
+			<hr>
+			<div id="chatList">
+	</div>
+			<hr>
+			<form action="" id="grp_reg_form" class="ch-form">
+
+				<input type="text" id="pw_grp_name" name="group-name" class="w-100 " 
+					placeholder="Type Something Here.." required="true"> <input
+					type="submit" value="send" id="create-group-btn">
+				<!--     <div id="create-group-btn" class="pw-submit-btn">Submit</div> -->
+			</form>
+		</div>
+	</div>
+
+</body>
+
+<script>
+	$('#grp_reg_form').submit(function(e) {
+		e.preventDefault();
+	});
+	$("#create-group-btn").click(
+			function() {
+				var jsonData = JSON.parse('{"name":"' + $("#pw_grp_name").val()
+						+ '"}');
+				$.ajax({
+					method : "POST",
+					url : "http://localhost:9090/papi/group/addGroup",
+					dataType : "json",
+					contentType : "application/json",
+					data : '{"name":"' + $("#pw_grp_name").val() + '"}'
+				}).done(function(msg) {
+					alert("Data Saved: " + msg);
+				});
+
+			});
+	var chats= [
+			    {
+			        "id": 1,
+			        "subject": null,
+			        "description": "Group-1 asdasdas dasd asd asd asd asd asda sd ",
+			        "period": null,
+			        "scheduleDate": null,
+			        "user_id": 1,
+			        "group_id": 1
+			    },
+			    {
+			        "id": 2,
+			        "subject": null,
+			        "description": "Group-1 asdasdas dasd asd asd asd asd asda sd ",
+			        "period": null,
+			        "scheduleDate": null,
+			        "user_id": 1,
+			        "group_id": 1
+			    },
+			    {
+			        "id": 3,
+			        "subject": null,
+			        "description": "Group-1 asdasdas dasd asd asd asd asd asda sd ",
+			        "period": null,
+			        "scheduleDate": null,
+			        "user_id": 1,
+			        "group_id": 1
+			    },
+			    {
+			        "id": 4,
+			        "subject": null,
+			        "description": "Group-1 asdasdas dasd asd asd asd asd asda sd ",
+			        "period": null,
+			        "scheduleDate": null,
+			        "user_id": 2,
+			        "group_id": 1
+			    },
+			    {
+			        "id": 5,
+			        "subject": null,
+			        "description": "Group-1 asdasdas dasd asd asd asd asd asda sd ",
+			        "period": null,
+			        "scheduleDate": null,
+			        "user_id": 1,
+			        "group_id": 1
+			    },
+			    {
+			        "id": 6,
+			        "subject": null,
+			        "description": "Group-1 asdasdas dasd asd asd asd asd asda sd ",
+			        "period": null,
+			        "scheduleDate": null,
+			        "user_id": 1,
+			        "group_id": 1
+			    },
+			    {
+			        "id": 7,
+			        "subject": null,
+			        "description": "Group-1 asdasdas dasd asd asd asd asd asda sd ",
+			        "period": null,
+			        "scheduleDate": null,
+			        "user_id": 2,
+			        "group_id": 1
+			    }
+			];
+	createChatList(chats, 1, 1, "chatList")
+</script>
+
+</html>

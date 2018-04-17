@@ -1,22 +1,23 @@
 package com.papi.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+@Entity
+@javax.persistence.Table(name = "PW_GROUP")
 
-@Entity(name = "PW_GROUP")
 public class Group implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -24,7 +25,7 @@ public class Group implements Serializable {
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = "ID")
-	private long id;
+	private long group_id;
 
 	@Column(name = "NAME")
 	private String name;
@@ -43,20 +44,20 @@ public class Group implements Serializable {
 	// @JoinColumn(name ="GROUP_ID")
 	// private List<User> users;
 
-	public List<User> getUsers() {
+	/*public List<User> getUsers() {
 		return users;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
-	}
+	}*/
 
 	public long getId() {
-		return id;
+		return group_id;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.group_id = id;
 	}
 
 	public String getName() {
@@ -84,7 +85,12 @@ public class Group implements Serializable {
 	}
 
 	// bi directional mapping to traverse from both the side
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
-	private List<User> users;
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
+	//private List<User> users;
+	 @OneToMany(cascade = CascadeType.ALL,
+	            fetch = FetchType.LAZY,
+	            mappedBy = "group")
+	    private Set<User> users = new HashSet<User>();
+
 
 }

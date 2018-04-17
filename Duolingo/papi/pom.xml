@@ -25,9 +25,25 @@
       <version>6.0.5</version>
     </dependency>
     <dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4</version>
+</dependency>
+<dependency>
+    <groupId>javax.activation</groupId>
+    <artifactId>activation</artifactId>
+    <version>1.1.1</version>
+</dependency>
+    <dependency>
     <groupId>org.springframework</groupId>
     <artifactId>spring-jdbc</artifactId>
     <version>4.3.10.RELEASE</version>
+</dependency>
+    <!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+<dependency>
+    <groupId>javax.mail</groupId>
+    <artifactId>mail</artifactId>
+    <version>1.4</version>
 </dependency>
     
     <dependency>
@@ -76,6 +92,23 @@
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>5.2.11.Final</version>
 		</dependency>
+		
+		<!-- Spring Security Artifacts - START -->
+      <!-- http://mvnrepository.com/artifact/org.springframework.security/spring-security-web%20-->
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-web</artifactId>
+         <version>5.0.3.RELEASE</version>
+      </dependency>
+ 
+      <!-- http://mvnrepository.com/artifact/org.springframework.security/spring-security-config%20-->
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-config</artifactId>
+          <version>5.0.3.RELEASE</version>
+      </dependency>
+      <!-- Spring Security Artifacts - END -->
+ 
 <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 
 		<!-- Logging -->

@@ -33,7 +33,7 @@ public class UserDaoImpl implements UserDao {
 	@SuppressWarnings("unchecked")
 	public List<User> getAllUsersForGroup(Long groupId) {
 
-		return sessionFactory.getCurrentSession().createQuery("from User where GROUP_ID=" + groupId).list();
+		return sessionFactory.getCurrentSession().createQuery("from User where group_id=" + groupId).list();
 	}
 
 	@Transactional

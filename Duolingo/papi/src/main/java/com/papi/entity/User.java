@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -11,16 +12,15 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-@Entity(name = "PW_USER")
+@Entity
+@javax.persistence.Table(name = "PW_USER")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
-	@Column(name = "id")
+	@Column(name = "user_id")
 	private Long id;
 
 	@Column(name = "FNAME")
@@ -55,10 +55,13 @@ public class User implements Serializable {
 
 	// bi directional mapping to traverse from both the side
 
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "GROUP_ID")
-	private Group group;
+	private Group group;*/
 
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id", nullable = false)
+	private Group group;
 	public Group getGroup() {
 		return group;
 	}
@@ -69,7 +72,12 @@ public class User implements Serializable {
 
 	public User() {
 	}
-
+	public User(String username, String password, String oEmailId){
+		this.username = username;
+		this.password = password;
+		this.oEmail = oEmailId;
+		
+	}
 	public Long getId() {
 		return id;
 	}
@@ -162,5 +170,8 @@ public class User implements Serializable {
 	public String toString() {
 		return "User: " + this.id + ", " + this.fName + ", " + this.age;
 	}
+	
+	
+	
 
 }
