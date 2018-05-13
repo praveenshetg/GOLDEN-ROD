@@ -3,9 +3,18 @@ package com.papi.utility;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import com.papi.entity.User;
 
@@ -22,7 +31,7 @@ public class PWUtility {
 		return new Date(0);
 	}
 
-	public static List<User> createUserFromUserEmail(List<String> users) {
+	public static List<User> createUserFromUserEmail(List<String> users, Long groupId) {
 		List<User> usList = new ArrayList<User>();
 		for (String emailId : users) {
 			String username = generateUserName(emailId);
@@ -30,9 +39,10 @@ public class PWUtility {
 			
 			System.out.println("user Created for "+emailId+" with username : "+username+ " and password : "+password);
 			//User user = new User(username, password, emailId);
+			usList.add(new User(username, password, emailId,  groupId ));
 		}
 
-		usList.add(new User());
+		//usList.add(new User(username, password, emailId, groupId));
 		return usList;
 	}
 
@@ -84,4 +94,46 @@ public class PWUtility {
         }
        return output.toString();
     }
+	
+	public static void sendMail(String subject, String content,String toMailId ) {
+
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class",
+				"javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
+
+
+        Session session = Session.getDefaultInstance(props,
+                new javax.mail.Authenticator() {
+                    @Override
+               protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(
+                                "freeinternship1@gmail.com", "freeintern");
+                    }
+                });
+
+		// compose message
+
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("freeinternship1@gmail.com"));
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(
+					toMailId));
+			message.setSubject(subject);
+			message.setText(content);
+			//message.setText("Dear Sir/Madam,\n\n   You have requested a password reset, please follow the link below to reset your password." + "\n" + "Please ignore this email if you did not request a password change.\n\n https://fordammy.com/papi/passwordreset/");
+
+			// send message
+			Transport.send(message);
+			System.out.println("message sent successfully");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+
 }

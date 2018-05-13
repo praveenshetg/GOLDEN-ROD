@@ -1,0 +1,44 @@
+<style>
+body { 
+    background: #fbbd08 url("images/btightyellow.jpg")  fixed center !important; 
+    }
+    ::-webkit-input-placeholder { /* Chrome */
+  color: red;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: red;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: red;
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: red;
+  opacity: 1;
+}
+</style>
+<body>
+<div class="log-form" id="login_form">
+  <h2>Login to your account</h2>
+  <form action="">
+  <p style="color:red;padding:2px;" id="login-error-msg">Invalid username or password.</p>
+    <input type="text" title="username" placeholder="username" id="pw-username" required/>
+    <input type="password" title="username" placeholder="password"  id="pw-password"  required/>
+    <button type="submit" class="login-btn btn" id="login-btn">Login</button>
+    <a class="forgot" href="/peakaboo/forgot_pass.html"  id="pw-forgot-pass" >Forgot Password?</a>
+    
+  </form>
+</div><!--end log form -->
+</body>
+<script>
+$( document ).ready(function() {
+ //alert( "ready!" );
+});
+$('#login_form').submit(function() {
+	//e.preventDefault();
+});
+$("#login-btn").click(function(){
+	login($("#pw-username").val(), $("#pw-password").val() )
+})
+</script>
+</html>

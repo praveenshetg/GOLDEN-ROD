@@ -44,7 +44,7 @@ public class UserController {
 		return userDao.getAllUsers();
 	}
 
-	@RequestMapping(value = "/getUserList{groupId}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/getUserList/{groupId}", method = RequestMethod.GET, produces = "application/json")
 	@ResponseBody
 	public List<User> getUserListForGroup(@PathVariable("groupId") Long groupId) {
 		System.out.println("getUserListForGroup");
@@ -54,21 +54,44 @@ public class UserController {
 
 	@RequestMapping(value = "/addUser/{groupId}", method = RequestMethod.POST, consumes = "application/json")
 	@ResponseBody
-	public void getUser(@RequestBody User user, @PathVariable("groupId") Long groupId) throws Exception {
+	public User addUser(@RequestBody User user, @PathVariable("groupId") Long groupId) throws Exception {
 		System.out.println("add user");
-
-		user.setGroup(groupDao.getGroup(groupId));
+		String username = PWUtility.generateUserName(user.getoEmail());
+		String password = PWUtility.generateRandomPasswordForUser(username);
+		user.setGroup_id(groupId);
+		user.setUsername(username);
+		user.setPassword(password);
+		//user.setGroup(groupDao.getGroup(groupId));
 		System.out.println(user);
 		userDao.addUser(user);
-
+		PWUtility.sendMail("Welcome to  Peakaboo", "Hi "+ user.getfName()+", \n\nYour Account is created with below details.\n\n username : "+username+"\n password : "+password+"\n\n Please login to peakaboo.com and update your profile with new password. \n\n\n Thank you.\n Peakaboo Team.", user.getoEmail());
+		return user;
+	}
+	@RequestMapping(value = "/updateUser/{groupId}", method = RequestMethod.PUT, consumes = "application/json")
+	@ResponseBody
+	public User updateUser(@RequestBody User user, @PathVariable("groupId") Long groupId) throws Exception {
+		User existingUserDetils = userDao.getUser(user.getId());
+		user.setoEmail(existingUserDetils.getoEmail());
+		userDao.updateUser(user);
+		return user;
+	}
+	@RequestMapping(value = "/changePassword/{userId}", method = RequestMethod.POST, consumes = "application/json")
+	@ResponseBody
+	public User updateUser(@RequestBody User user, @PathVariable("groupId") Long groupId) throws Exception {
+		User existingUserDetils = userDao.getUser(user.getId());
+		user.setoEmail(existingUserDetils.getoEmail());
+		userDao.updateUser(user);
+		return user;
 	}
 	@RequestMapping(value = "/createAutoUsers/{groupId}", method = RequestMethod.POST, consumes = "application/json")
 	@ResponseBody
-	public void getUser( @RequestBody UserWrapper users, @PathVariable("groupId") Long groupId) throws Exception {
+	public void createAutoUsers( @RequestBody UserWrapper users, @PathVariable("groupId") Long groupId) throws Exception {
 		System.out.println("createAutoUsers");
-		PWUtility.createUserFromUserEmail(users.getUser());
-
-		
+		List<User> userList = PWUtility.createUserFromUserEmail(users.getUser(), groupId);
+		for(User user: userList){
+			userDao.addUser(user);
+			PWUtility.sendMail("Welcome to  Peakaboo", "Hi "+ user.getUsername()+", \n\nYour Account is created with below details.\n\n username : "+user.getUsername()+"\n password : "+user.getPassword()+"\n\n Please login to peakaboo.com and update your profile with new password. \n\n\n Thank you.\n Peakaboo Team.", user.getoEmail());
+		}
 
 	}
 	@RequestMapping("*")

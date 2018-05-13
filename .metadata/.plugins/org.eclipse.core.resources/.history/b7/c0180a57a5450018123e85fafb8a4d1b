@@ -1,0 +1,26 @@
+#main-content { 
+   #background: #fbbd08 url("../images/.gif")  fixed center !important; 
+}
+
+.middle {
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color:white;
+}
+
+.line {
+    margin: auto;
+    width: 40%;
+}
+
+.blog-div{
+	padding:5px;
+	margin:5px;
+	    width: 250px;
+    height: 250px;
+    border: 4px solid gray;
+    border-radius: 7em 1em;
+}

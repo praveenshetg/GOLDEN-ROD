@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;papi-ui/WebContent/images/pexels-photo-428341.jpeg&apos; to &apos;admin.jpeg&apos;" description="Rename resource &apos;pexels-photo-428341.jpeg&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/images/pexels-photo-428341.jpeg" name="admin.jpeg" stamp="1524497296109" updateReferences="true"/>
+</session>

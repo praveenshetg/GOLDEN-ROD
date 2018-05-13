@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+			<item value="jira"/>
+		</list>
+		<list key="issueManagementUrl">
+			<item value="https://hibernate.atlassian.net/browse/HHH"/>
+		</list>
+	</section>
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/Users/pshet/Downloads/springSecurityApp"/>
+			<item value="/Users/pshet/Downloads/StudentManagement"/>
+			<item value="/Users/pshet/workspace/learning-workspace/Duolingo"/>
+			<item value="/Users/pshet/Downloads/Spring4MVCCRUDRestService1"/>
+			<item value="/Users/pshet/Downloads/spring-mvc-restfull-crud-example"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="wizardPage">
+		<list key="groupId">
+			<item value="papi"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="papi"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="/Users/pshet/Downloads/spring-mvc-restfull-crud-example"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="com.proawitz.papi.Duolingo"/>
+		</list>
+		<list key="groupId">
+			<item value="com.proawitz.papi"/>
+		</list>
+		<list key="artifactId">
+			<item value="Duolingo"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+</section>

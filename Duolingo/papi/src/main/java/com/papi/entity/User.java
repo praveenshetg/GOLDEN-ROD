@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @javax.persistence.Table(name = "PW_USER")
@@ -29,14 +30,14 @@ public class User implements Serializable {
 	@Column(name = "LNAME")
 	private String lName;
 
-	@Column(name = "OEMAIL")
+	@Column(name = "OEMAIL", unique = true)
 	private String oEmail;
 
-	@Column(name = "PEMAIL")
+	@Column(name = "PEMAIL", unique = true)
 	private String pEmail;
 
 	@Column(name = "AGE")
-	private int age;
+	private Integer age;
 
 	@Column(name = "USERNAME")
 	private String username;
@@ -48,10 +49,20 @@ public class User implements Serializable {
 	private String gender;
 
 	@Column(name = "ABOUTYOU")
+	@Type(type="text")
 	private String aboutYou;
 
 	@Column(name = "ORGANIZATION")
 	private String organization;
+	
+	
+	private Long group_id;
+	
+	private String role_name;
+	
+	private String token;
+	
+	
 
 	// bi directional mapping to traverse from both the side
 
@@ -59,24 +70,34 @@ public class User implements Serializable {
 	@JoinColumn(name = "GROUP_ID")
 	private Group group;*/
 
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id", nullable = false)
-	private Group group;
-	public Group getGroup() {
-		return group;
-	}
+	
 
-	public void setGroup(Group group) {
-		this.group = group;
-	}
 
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public String getRole_name() {
+		return role_name;
+	}
+	public void setRole_name(String role_name) {
+		this.role_name = role_name;
+	}
+	public Long getGroup_id() {
+		return group_id;
+	}
+	public void setGroup_id(Long group_id) {
+		this.group_id = group_id;
+	}
 	public User() {
 	}
-	public User(String username, String password, String oEmailId){
+	public User(String username, String password, String oEmailId,Long groupId){
 		this.username = username;
 		this.password = password;
 		this.oEmail = oEmailId;
-		
+		this.group_id = groupId;
 	}
 	public Long getId() {
 		return id;
@@ -118,11 +139,11 @@ public class User implements Serializable {
 		this.pEmail = pEmail;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 

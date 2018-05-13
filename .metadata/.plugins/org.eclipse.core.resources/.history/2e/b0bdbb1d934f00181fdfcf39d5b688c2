@@ -1,0 +1,91 @@
+function resetButtonStatus() {
+	$("#chat-btn").removeClass("active-btn");
+	$("#grp-btn").removeClass("active-btn");
+	$("#usr-main-btn").removeClass("active-btn");
+	$("#sch-btn").removeClass("active-btn");
+	$("#rctn-main-btn").removeClass("active-btn");
+	$("#home-btn").removeClass("active-btn");
+}
+
+$(document).ready(function() {
+	
+	  $(document).bind("click", "#home-btn", function(e) {
+		  e.stop
+		   alert("dsfs");
+	   });
+	  
+});
+ 
+   $("#home-btn").click(function() {
+		resetButtonStatus();
+		$("#home-btn").addClass("active-btn")
+		
+		//$("#main-content").load("view/home.html");
+		setView("view/home.html");
+
+	});
+   
+ 
+   
+	$("#chat-btn").click(function() {
+		resetButtonStatus();
+		$("#chat-btn").addClass("active-btn")
+		//$("#main-content").load("view/chatScreen.html");
+		setView("view/chatScreen.html");
+
+	});
+	$("#grp-btn").click(function() {
+		resetButtonStatus();
+		$("#grp-btn").addClass("active-btn")
+		//$("#main-content").load("view/group_registration.html");
+		setView("view/group_registration.html");
+
+	});
+	$("#usr-btn").click(function() {
+		resetButtonStatus();
+		$("#usr-main-btn").addClass("active-btn")
+		//$("#main-content").load("view/user_registration.html");
+		setView("view/user_registration.html");
+
+	});
+	$("#sch-btn").click(function() {
+		resetButtonStatus();
+		$("#sch-btn").addClass("active-btn")
+		//$("#main-content").load("view/scheduler.html");
+		setView("view/group_registration.html");
+
+	});
+	$("#rctn-btn").click(function() {
+		resetButtonStatus();
+		$("#rctn-main-btn").addClass("active-btn")
+		//$("#main-content").load("view/reaction.html");
+		setView("view/reaction.html");
+
+	});
+	$("#fb-page-btn").click(function() {
+		resetButtonStatus();
+		$("#rctn-main-btn").addClass("active-btn")
+		//$("#main-content").load("view/feedBackListView.html");
+		setView("view/feedBackListView.html");
+
+	});
+	$("#usr-auto-btn").click(function() {
+		resetButtonStatus();
+		$("#usr-main-btn").addClass("active-btn")
+		$("#main-content").load("view/userAutoCreateView.html");
+		setView("view/userAutoCreateView.html");
+
+	});
+	$("#mail-config-btn").click(function() {
+		resetButtonStatus();
+		$("#usr-main-btn").addClass("active-btn")
+		//$("#main-content").load("view/settings/mailConfigView.html");
+		setView("view/settings/mailConfigView.html");
+
+	});
+	$("#mail-template-btn").click(function() {
+		resetButtonStatus();
+		$("#usr-main-btn").addClass("active-btn")
+		//$("#main-content").load("view/settings/mailTemplatesView.html");
+		setView("view/settings/mailTemplatesView.html");
+	});

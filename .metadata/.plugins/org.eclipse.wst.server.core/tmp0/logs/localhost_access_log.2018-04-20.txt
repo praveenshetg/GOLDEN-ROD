@@ -1,0 +1,10 @@
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:17 +0530] "GET /papi-front/view/home.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:17 +0530] "GET /papi-front/css/home.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:32 +0530] "GET /papi-front/view/chatScreen.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:32 +0530] "GET /papi/schedule/getmessagelist/1 HTTP/1.1" 200 1401
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:38 +0530] "GET /papi-front/view/group_registration.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:38 +0530] "GET /papi-front/view/groupView.html HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:38 +0530] "GET /papi/group/getGroupList HTTP/1.1" 200 4909
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:55 +0530] "GET /papi-front HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:55 +0530] "GET /papi-front/ HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [20/Apr/2018:10:02:55 +0530] "GET /papi-front/css/login.css HTTP/1.1" 304 -

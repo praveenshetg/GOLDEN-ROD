@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.proawitz.papi</groupId>
 		<artifactId>Duolingo</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.1</version>
 	</parent>
 	<groupId>com.proawitz.papi</groupId>
 	<artifactId>papi-ui</artifactId>
@@ -19,6 +19,7 @@
 <!-- 		<version>0.0.1-SNAPSHOT</version> -->
 <!-- 	</parent> -->
 	<build>
+	<finalName>peakaboo</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-eclipse-plugin</artifactId>

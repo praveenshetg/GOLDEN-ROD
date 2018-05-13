@@ -42,6 +42,10 @@ public class SchedulerController {
 		Conversation conv = new  Conversation();
 		conv.setDescription(schedule.getDescription());
 		conv.setScheduleDate(schedule.getScheduleDate());
+		conv.setScheduleDate(schedule.getScheduleDate());
+		conv.setUsername(schedule.getUsername());
+		conv.setGroup_id(schedule.getUser_id());
+		conv.setUser_id(schedule.getGroup_id());
 		schedulerDao.addConversation(conv);
 		//String scDate= "31/03/2018 5:57 PM";
 		String scDate = schedule.getScheduleDate();

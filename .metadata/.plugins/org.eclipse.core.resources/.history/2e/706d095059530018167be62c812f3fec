@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="css/chat-screen.css">
+<link rel="stylesheet" type="text/css" href="css/login.css">
+<link rel="stylesheet" type="text/css" href="css/forms.css">
+<link rel="stylesheet" type="text/css" href="css/side-menu.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<link rel="stylesheet" type="text/css" href="css/scheduler.css">
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+
+<script src="js/base.js"></script>
+<script src="js/sideMenu.js"></script>
+<script src="js/utility.js"></script>
+</head>
+<body>
+	<div class="nav">
+		<div class="company-name">
+			<button class="side-menu-btn" id="side-menu-btn">
+				<i class="fa fa-bars"></i>
+			</button>
+			<div class="c-name" id="c-name"></div>
+		</div>
+		<div class="user-menu">
+			<div class="welcome-text" id="welcome-text"></div>
+			<div class="dropdown">
+				<div id="main-btn">
+					<img src="images/image1.jpg" class="profile-pic" alt="Avatar"
+						style="width: 100%;">
+					<div class="dropdown-content" style="top: 46px; right: -38px;">
+						<a id="profile-btn">Profile</a> <a id="p-logout-btn"
+							href="/peakaboo/">Logout</a>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<div id="menu-list"></div>
+	</div>
+
+	<div id="outer-content">
+		<div class="table-container">
+			<div id="main-content"></div>
+		</div>
+	</div>
+	<div id="snackbar" class="snackbar">.</div>
+	<div class="spinner" ></div>
+	<div class='lmask'></div>
+</body>
+<script>
+
+	$(function() {
+		getGroups();
+		//$("#menu-list").load("view/common/side_menu.html");
+		$(".nav").hide();
+		let promise = new Promise((resolve, reject) => {
+			data = '{"oEmail":"'
+				+ localStorage.getItem("auth-email")
+				+ '","password":"'
+				+ password
+				+ '","token":"'
+				+ token
+				+ '"}';
+			$.ajax({
+				  method: "POST",
+				  url: projectDetails.url+""+projectDetails.restappname+"/auth/login",
+				  contentType: "application/json",
+				  data: data
+				}).done(function( response ) {
+					resolve(response);
+					//reject(Error(request.statusText));
+				});
+		});
+			promise.then((data) => {
+			  console.log('Got data! Promise fulfilled.');
+			  userDetails.user = data.user;
+			  userDetails.group = data.group;
+			  localStorage.setItem("auth-token", "data.user.token");
+			  processLogin(username);
+			  $(".spinner").hide();
+			}, (error) => {
+			  console.log('Promise rejected.');
+			  console.log(error.message);
+			  $(".spinner").hide();
+			});
+		setView("login")
+		//$("#main-content").load("login.html");
+
+	});
+	$("#profile-btn").click(function() {
+		setView("view/user_profile")
+		//$("#main-content").load("view/user_profile.html");
+
+	});
+
+	$("#side-menu-btn").click(function(e) {
+		e.stopPropagation();
+		console.log("button clicked")
+		$(".btn-group").toggleClass("show-side-menu");
+
+	});
+	$("body").click(function(e) {
+		console.log("body clicked")
+		$(".btn-group").removeClass("show-side-menu");
+
+	});
+	$(".c-name").click(function(){
+		$("#home-btn").click();
+	});
+	 var user="end_user"
+		 if (user=="end_user"){
+			 $(".admin").hide();
+			 $(".end_user").show();
+			}
+	 $(".spinner").hide();
+	 $("#c-name").html(this.projectDetails.appname);
+	 $("#welcome-text").html("Welcome "+this.userDetails.user.name);
+</script>
+<style>
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 6px 0px 6px 1px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+        background-color: #2b2b2b;
+            opacity: 0.8;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+#--------Mask----
+.spinner.fixed {
+  position: fixed;
+}
+.spinner:before {
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
+  border: 5px solid rgba(0, 183, 229, 0.9);
+  opacity: 0.9;
+  border-right: 5px solid rgba(0, 0, 0, 0);
+  border-left: 5px solid rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  box-shadow: 0 0 35px #2187e7;
+  width: 50px;
+  height: 50px;
+  -moz-animation: spinPulse 1s infinite ease-in-out;
+  -webkit-animation: spinPulse 1s infinite linear;
+  margin: -25px 0 0 -25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.spinner:after {
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
+  border: 5px solid rgba(0, 183, 229, 0.9);
+  opacity: 0.9;
+  border-left: 5px solid rgba(0, 0, 0, 0);
+  border-right: 5px solid rgba(0, 0, 0, 0);
+  border-radius: 50px;
+  box-shadow: 0 0 15px #2187e7;
+  width: 30px;
+  height: 30px;
+  -moz-animation: spinoffPulse 1s infinite linear;
+  -webkit-animation: spinoffPulse 1s infinite linear;
+  margin: -15px 0 0 -15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+@-moz-keyframes spinPulse {
+  0% {
+    -moz-transform: rotate(160deg);
+    opacity: 0;
+    box-shadow: 0 0 1px #2187e7;
+  }
+  50% {
+    -moz-transform: rotate(145deg);
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: rotate(-320deg);
+    opacity: 0;
+  }
+}
+@-moz-keyframes spinoffPulse {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spinPulse {
+  0% {
+    -webkit-transform: rotate(160deg);
+    opacity: 0;
+    box-shadow: 0 0 1px #2187e7;
+  }
+  50% {
+    -webkit-transform: rotate(145deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-320deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes spinoffPulse {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+input:not(:placeholder-shown) {
+  #border-color: green;
+}
+
+input:placeholder-shown {
+  #border-color: red;
+}
+.spinner {
+  #position: absolute;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.2);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 9999;
+  #opacity: 0.4;
+}
+</style>
+</html>

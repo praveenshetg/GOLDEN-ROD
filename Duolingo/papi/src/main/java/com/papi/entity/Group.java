@@ -24,8 +24,8 @@ public class Group implements Serializable {
 	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
-	@Column(name = "ID")
-	private long group_id;
+	@Column(name = "ID", unique = true)
+	private Long group_id;
 
 	@Column(name = "NAME")
 	private String name;
@@ -40,6 +40,8 @@ public class Group implements Serializable {
 		this.category = "General";
 		this.status = "Active";
 	}
+	
+	private Integer users=0;
 	// @OneToMany
 	// @JoinColumn(name ="GROUP_ID")
 	// private List<User> users;
@@ -52,11 +54,19 @@ public class Group implements Serializable {
 		this.users = users;
 	}*/
 
-	public long getId() {
+	public Integer getUser_count() {
+		return users;
+	}
+
+	public void setUser_count(Integer users) {
+		this.users = users;
+	}
+
+	public Long getId() {
 		return group_id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.group_id = id;
 	}
 
@@ -87,10 +97,10 @@ public class Group implements Serializable {
 	// bi directional mapping to traverse from both the side
 	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
 	//private List<User> users;
-	 @OneToMany(cascade = CascadeType.ALL,
-	            fetch = FetchType.LAZY,
-	            mappedBy = "group")
-	    private Set<User> users = new HashSet<User>();
+//	 @OneToMany(cascade = CascadeType.ALL,
+//	            fetch = FetchType.LAZY,
+//	            mappedBy = "group")
+//	    private Set<User> users = new HashSet<User>();
 
 
 }

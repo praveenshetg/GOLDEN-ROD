@@ -1,8 +1,6 @@
 package com.papi.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 @Entity
 @javax.persistence.Table(name = "PW_CHAT_HISTORY")
@@ -22,9 +21,11 @@ public class Conversation implements Serializable {
 	@Column(name = "chat_id")
 	Long id;
 	String subject;
+	@Type(type="text")
 	String description;
 	String period;
 	String scheduleDate;
+	String username;
 	Long user_id;
 	Long group_id;
 	public Conversation(){
@@ -33,10 +34,17 @@ public class Conversation implements Serializable {
 	public Conversation(String description, Long user_id, Long group_id){
 		this.subject = "";
 		this.description = description ;
-		this.description = "none";
+		this.period = "none";
 		this.user_id = user_id;
 		this.group_id = group_id;
 		
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public Long getId() {
 		return id;

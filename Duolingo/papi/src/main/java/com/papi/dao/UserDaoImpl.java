@@ -1,10 +1,13 @@
 package com.papi.dao;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +21,13 @@ public class UserDaoImpl implements UserDao {
 
 	@Transactional
 	public void addUser(User User) {
+		//try{
+			
+			
 		sessionFactory.getCurrentSession().saveOrUpdate(User);
+//		}catch(SQLIntegrityConstraintViolationException e){
+//			
+//		}
 
 	}
 
@@ -51,10 +60,48 @@ public class UserDaoImpl implements UserDao {
 		return (User) sessionFactory.getCurrentSession().get(User.class, id);
 	}
 
+	// @Transactional
+	// public User getUserByMailId(String oEmail) {
+	// return (User) sessionFactory.getCurrentSession().get(User.class, oEmail);
+	// }
+	@Transactional
+	public User getUserByMailIdAndPassword(String mailId, String password) {
+		User user = null;
+		Query q = null;
+		q = sessionFactory.getCurrentSession().createQuery("from User where oEmail like '" + mailId + "' and password like '" + password +"'");
+		try {
+			user = (User) q.getSingleResult();
+		} catch (NoResultException nre) {
+			// Ignore this because as per your logic this is ok!
+		}
+		return user;
+
+	}
+
+	@Transactional
+	public User getUserByToken(String token) {
+		User user = null;
+		Query q = null;
+		q = sessionFactory.getCurrentSession().createQuery("from User where token like '" + token + "'");
+		try {
+			user = (User) q.getSingleResult();
+		} catch (NoResultException nre) {
+			// Ignore this because as per your logic this is ok!
+		}
+		return user;
+	}
+
 	@Override
 	public User updateUser(User User) {
 		sessionFactory.getCurrentSession().update(User);
 		return User;
 	}
 
+	@Override
+	public int getUserCountForGroup(Long groupId) {
+
+		Integer count = (Integer) sessionFactory.getCurrentSession()
+				.createQuery("select count(*)from User where group_id=" + groupId).uniqueResult();
+		return count;
+	}
 }

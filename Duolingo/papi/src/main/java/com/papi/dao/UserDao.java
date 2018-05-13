@@ -23,5 +23,11 @@ public interface UserDao {
 	public User updateUser(User user);
 
 	public User getUser(Long id);
+	
+	public User getUserByMailIdAndPassword(String mailId, String password);
+	
+	public User getUserByToken(String token);
+	
+	public int getUserCountForGroup(Long user_id);
 
 }

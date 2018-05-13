@@ -1,0 +1,13 @@
+package com.papi.controller;
+
+public class sample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SecureRandom random = new SecureRandom();
+		byte bytes[] = new byte[20];
+		random.nextBytes(bytes);
+		String token = bytes.toString();
+	}
+
+}

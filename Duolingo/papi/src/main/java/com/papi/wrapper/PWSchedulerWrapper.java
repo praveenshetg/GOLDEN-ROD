@@ -7,6 +7,29 @@ public class PWSchedulerWrapper {
 	String description;
 	String period;
 	String scheduleDate;
+	String username;
+    long user_id;
+    long group_id;
+    
+    
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public long getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(long user_id) {
+		this.user_id = user_id;
+	}
+	public long getGroup_id() {
+		return group_id;
+	}
+	public void setGroup_id(long group_id) {
+		this.group_id = group_id;
+	}
 	public String getSubject() {
 		return subject;
 	}

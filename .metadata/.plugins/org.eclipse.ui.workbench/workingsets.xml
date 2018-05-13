@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1522220880742_1" label="Duolingo" name="Duolingo">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Duolingo" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/papi" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/papi-ui" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1521784459250_0" label="Window Working Set" name="Aggregate for window 1521784459249"/>
+</workingSetManager>

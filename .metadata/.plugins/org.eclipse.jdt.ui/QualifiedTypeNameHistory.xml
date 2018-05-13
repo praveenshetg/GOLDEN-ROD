@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.Response"/>
+<fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="javax.ws.rs.Path"/>
+<fullyQualifiedTypeName name="javax.persistence.Table"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.springframework.orm.hibernate3.HibernateTemplate"/>
+<fullyQualifiedTypeName name="org.springframework.orm.hibernate5.HibernateTemplate"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="com.papi.dao.UserDao"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+<fullyQualifiedTypeName name="javax.transaction.Transactional"/>
+<fullyQualifiedTypeName name="com.papi.dao.FeedBackQuestionDao"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+<fullyQualifiedTypeName name="com.papi.entity.Conversation"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="org.hibernate.annotations.Type"/>
+<fullyQualifiedTypeName name="com.papi.entity.User"/>
+<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+<fullyQualifiedTypeName name="com.papi.utility.PWUtility"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="com.papi.dao.GroupDao"/>
+<fullyQualifiedTypeName name="com.papi.entity.Group"/>
+<fullyQualifiedTypeName name="org.hibernate.query.Query"/>
+<fullyQualifiedTypeName name="java.sql.SQLIntegrityConstraintViolationException"/>
+</qualifiedTypeNameHistroy>

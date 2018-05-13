@@ -1,0 +1,132 @@
+<html>
+<style>
+.container-box{
+    #width: 100%;
+    display: flow-root;
+        padding-left: 1%;
+          padding-right: 1%;
+         #background: rgba(0,0,0,.05) !important;
+}
+.container {
+	border: 2px solid #dedede;
+	#background-color: #ffee9d69;
+	background-color: #ffee9d;
+	border-radius: 5px;
+	padding: 10px;
+	margin: 10px 0;
+	    width: 50%;
+    float: left;
+}
+
+/* Darker chat container */
+.darker {
+	float: right;
+	border-color: #ccc;
+	background-color: #ffee9d;
+}
+
+/* Clear floats */
+.container::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Style images */
+.container img {
+	float: left;
+	max-width: 60px;
+	width: 100%;
+	margin-right: 20px;
+	border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+	float: right;
+	margin-left: 20px;
+	margin-right: 0;
+}
+
+/* Style time text */
+.time-right {
+	float: right;
+	color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+	float: left;
+	color: #999;
+}
+#chatList{
+    height: 425px;
+    overflow: auto;
+    border-radius: 5px 5px 0 0;
+        background: rgba(180, 180, 180, 0.27);
+            box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.2);
+    }
+@media (max-height: 600px) {
+#chatList{
+    height: 424px;
+    overflow: auto;
+    }
+    }
+    .refresh-msgs{
+    color:goldenrod;
+    float:right;
+    }
+    .refresh-msgs::hover{
+    color:gray;
+    float:right;
+    }
+</style>
+<body>
+	<div class="main-div">
+		<div class="form-div">
+			<select id="group_id"></select>
+			<h1 style="background-color:#312929;color:goldenrod;"> <i class="fa fa-comments-o"> </i> <span id="grp-header" style="width:80%;"></span><i class="fa fa-refresh refresh-msgs" id="refresh-msgs" style=""></i></h1>
+			<hr>
+			
+<div id="chatList"></div>
+		<hr> 
+			<form action="" id="chat_form" class="ch-form">
+
+				<input type="text" id="user-msg" name="group-name" class="w-100 " 
+					placeholder="Type Something Here.." > <input
+					type="submit" value="send" id="send-message-btn">
+				<!--     <div id="create-group-btn" class="pw-submit-btn">Submit</div> -->
+			</form>
+		</div>
+	</div>
+
+</body>
+
+<script>
+	$('#chat_form').submit(function(e) {
+		e.preventDefault();
+	});
+
+	$("#send-message-btn").click(
+			function () {
+				d = Date.now();
+				d = new Date(d);
+				d = d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear()+' '+(d.getHours() > 12 ? d.getHours() - 12 : d.getHours())+':'+d.getMinutes()+' '+(d.getHours() >= 12 ? "PM" : "AM");
+
+				var data= '{"description":"' + $("#user-msg").val() + '","user_id":1,"group_id":1,"scheduleDate":"'+d+'" }'
+				pushChat(data);
+				$("#user-msg").val("")
+	});
+	
+	$("#group_id").on('change', function() {
+		$("#grp-header").text(''+$("#group_id option:selected").text()+'');
+	})
+	$("#grp-header").text(this.groupDetails.group.name);
+	getChatList();
+	generateGroupNamesOptions('group_id');
+	$("#refresh-msgs").click(function(){
+		getChatList();
+	});
+	
+	</script>
+</html>

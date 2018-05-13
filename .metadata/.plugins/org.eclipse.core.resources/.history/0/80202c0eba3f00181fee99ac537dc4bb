@@ -1,8 +1,0 @@
-<link rel="stylesheet" type="text/css" href="../css/login.css">
-<div class="log-form">Reset Password</h2>
-  <form action="/papi-front/">
-    <input type="text" title="email" placeholder="email" />
-    <button type="submit" class="btn">Login</button>
-    <a class="forgot" href="/papi-front/forgot_pass.html">Forgot Username?</a>
-  </form>
-</div><!--end log form -->

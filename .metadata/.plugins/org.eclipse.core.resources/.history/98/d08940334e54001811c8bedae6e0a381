@@ -1,0 +1,52 @@
+<html>
+<style>
+
+</style>
+<body>
+	<div class="main-div">
+		<div class="form-div chat-screen" >
+			
+			<h1 style="background-color:#312929;color:goldenrod;"> <i class="fa fa-comments-o"> </i> <span id="grp-header" style="width:80%;"><select id="group_id"></select></span><i class="fa fa-refresh refresh-msgs" id="refresh-msgs" style=""></i></h1>
+			
+<div id="chatList"></div>
+			<form action="" id="chat_form" class="ch-form">
+
+				<input type="text" id="user-msg" name="group-name" class="w-100 " 
+					placeholder="Type Something Here.." > <input
+					type="submit" value="send" id="send-message-btn">
+			</form>
+		</div>
+	</div>
+
+</body>
+
+<script>
+	$('#chat_form').submit(function(e) {
+		e.preventDefault();
+	});
+
+	$("#send-message-btn").click(
+			function () {
+				d = Date.now();
+				d = new Date(d);
+				d = d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear()+' '+(d.getHours() > 12 ? d.getHours() - 12 : d.getHours())+':'+d.getMinutes()+' '+(d.getHours() >= 12 ? "PM" : "AM");
+
+				var data= '{"description":"' + $("#user-msg").val() + '","user_id":"' +userDetails.user.id+'","group_id":"' +groupDetails.group.id+ '","scheduleDate":"'+d+'","username":userDetails.user.username }'
+				pushChat(data);
+				$("#user-msg").val("")
+	});
+	
+	$("#group_id").on('change', function() {
+		//$("#grp-header").text(''+$("#group_id option:selected").text()+'');
+		getChatList($("#group_id").val());
+	})
+	//*  */$("#grp-header").text(groupDetails.group.name);
+	SelectElement('group_id',groupDetails.group.id)
+	getChatList(groupDetails.group.id);
+	generateGroupNamesOptions('group_id');
+	$("#refresh-msgs").click(function(){
+		getChatList($("#group_id").val());
+	});
+	
+	</script>
+</html>

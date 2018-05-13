@@ -22,7 +22,7 @@ public class PWScheduler extends TimerTask {
 		 * String msg=""; String email="";
 		 */
 
-		String title = "Expense Management";
+		String title = "Peakaboo Refresher";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
@@ -50,7 +50,7 @@ public class PWScheduler extends TimerTask {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(
 					"praveenshetg@gmail.com"));
 			message.setSubject(title);
-			message.setText("zsasas" + " " + "asasas");
+			message.setText("Hi Sir/Madam,\n\n   You have requested a password reset, please follow the link below to reset your password." + "\n" + "Please ignore this email if you did not request a password change.\n\n https://fordammy.com/papi/passwordreset/");
 
 			// send message
 			Transport.send(message);

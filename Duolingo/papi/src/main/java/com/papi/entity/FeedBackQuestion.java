@@ -9,7 +9,8 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity(name = "PW_QUESTION")
+@Entity
+@javax.persistence.Table(name = "PW_QUESTION")
 public class FeedBackQuestion implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
